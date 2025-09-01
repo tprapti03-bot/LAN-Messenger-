@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #0f0b24;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lanmessenger.controller.ChatUi">
+    <children>
+
+        <!-- Left Sidebar -->
+        <VBox layoutX="17.0" layoutY="85.0" prefHeight="360.0" prefWidth="134.0" style="-fx-background-color: #000000;">
+            <children>
+                <!--Search Field (from first version) -->
+                <TextField fx:id="searchField" prefHeight="26.0" prefWidth="134.0" promptText="Search users" style="-fx-background-color: #373f57; -fx-text-fill: white;" />
+                <!-- 👥 User List -->
+                <ListView fx:id="userList" prefHeight="374.0" prefWidth="134.0" style="-fx-background-color: #021429;" />
+            </children>
+        </VBox>
+
+        <!-- Messages Scroll Area -->
+        <ScrollPane fx:id="scrollpane_main" hbarPolicy="NEVER" layoutX="162.0" layoutY="49.0" prefHeight="400.0" prefWidth="528.0" style="-fx-background-color: #373f57;" vbarPolicy="AS_NEEDED">
+            <content>
+                <VBox fx:id="vbox_messages" prefHeight="398.0" prefWidth="526.0" style="-fx-background-color: #021429;">
+                    <children>
+                        <ButtonBar prefHeight="0.0" prefWidth="511.0" />
+                    </children>
+                </VBox>
+            </content>
+        </ScrollPane>
+
+        <!-- Message Input Field -->
+        <TextField fx:id="tf_message" layoutX="233.0" layoutY="455.0" onAction="#sendText" prefHeight="30.0" prefWidth="418.0" promptText="   Type here" style="-fx-background-color: #373f57; -fx-text-fill: white;" />
+
+        <!-- Header Labels -->
+        <Label alignment="CENTER" layoutX="162.0" layoutY="13.0" prefHeight="26.0" prefWidth="406.0" text="MESSAGES" textFill="#bde3ff">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+        <Label alignment="CENTER" layoutX="20.0" layoutY="11.0" prefHeight="30.0" prefWidth="128.0" text="Rooms/Inbox" textFill="#c9fffe">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+
+        <!--  Log Out Button -->
+        <Button layoutX="17.0" layoutY="454.0" mnemonicParsing="false" onAction="#LogOut" prefHeight="30.0" prefWidth="134.0" style="-fx-background-color: #3771b3;" text="Log Out" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Button>
+
+        <!--  File Sharing Icon -->
+        <ImageView fx:id="fileShareIcon" fitHeight="25.0" fitWidth="25.0" layoutX="162.0" layoutY="458.0" onMouseClicked="#handleFileShare" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/paperclip-512 resized.png" />
+            </image>
+        </ImageView>
+      <ImageView fx:id="sendIcon" fitHeight="30.0" fitWidth="46.0" layoutX="656.0" layoutY="455.0" onMouseClicked="#sendText" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/rsz_sendicon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="searchIcon" fitHeight="30.0" fitWidth="30.0" layoutX="650.0" layoutY="11.0" onMouseClicked="#SeachBarToggle" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/rsz_searchicon.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="searchHistory" layoutX="464.0" layoutY="11.0" onAction="#searchMessage" prefHeight="30.0" prefWidth="180.0" style="-fx-background-color: #bde3ff;" visible="false" />
+      <HBox layoutX="17.0" layoutY="49.0" prefHeight="30.0" prefWidth="134.0" style="-fx-background-color: #174e96; -fx-border-color: #041b3b; -fx-border-width: 1;">
+         <children>
+            <Label fx:id="loggedInUsername" alignment="CENTER" prefHeight="26.0" prefWidth="136.0" text="Label" textFill="#faf4f4">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <ImageView fx:id="emojiIcon" fitHeight="30.0" fitWidth="49.0" layoutX="197.0" layoutY="456.0" onMouseClicked="#openEmojiPicker" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/emoji.png" />
+         </image>
+      </ImageView>
+
+    </children>
+</AnchorPane>
